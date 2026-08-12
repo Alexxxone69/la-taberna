@@ -10,14 +10,14 @@
 
 /* NAV: asset is decorative background; labels stay HTML */
 .topnav{position:fixed;top:0;left:0;right:0;z-index:50;height:74px;display:flex;align-items:center;background:rgba(5,3,2,.68);backdrop-filter:blur(6px)}
-.navframe{position:absolute;inset:4px 12px;background:url("assets/marcos/marco-menu-inicio.png") center/100% 100% no-repeat;pointer-events:none;opacity:.98}
-.navcontent{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:34px;width:100%;font-size:.92rem;text-transform:uppercase;text-shadow:0 2px 4px #000}
-.navcontent a:hover{color:var(--gold2)}.navdiscord{padding:10px 18px;border-radius:7px;background:#3f3a9d;border:1px solid #c19a49;font-family:Arial,sans-serif;font-weight:800}
+.navframe{position:absolute;inset:4px 12px;background:url("assets/marcos/marco-menu-inicio.png") center/45% 100% no-repeat;pointer-events:none;opacity:.98}
+.navcontent{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:45px;width:100%;font-size:.92rem;text-transform:uppercase;text-shadow:0 2px 4px #000}
+
 
 /* HERO */
 .hero{min-height:760px;position:relative;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid #6f4920}
 .hero:before{content:"";position:absolute;inset:0;background:url("assets/hero-taberna.png") center/cover no-repeat}
-.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,2,1,.18),rgba(4,2,1,.28) 44%,rgba(4,2,1,.5)),linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.34))}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,2,1,.08),rgba(4,2,1,.20) 44%,rgba(4,2,1,.36)),linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.26))}
 .heroin{position:relative;z-index:2;display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:34px;padding-top:70px}
 .logo{width:min(540px,100%);filter:drop-shadow(0 18px 24px #000c)}
 .herotext{text-align:center;text-shadow:0 4px 12px #000}
@@ -36,24 +36,147 @@ main{background:radial-gradient(circle at 50% 0,#24130b,#090503 58%);padding:22p
 .assetbg{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none}
 .content{position:relative;z-index:2;padding:48px 54px}
 .light{color:#28170d}.light h2{color:#28170d}.dark h2{color:#e5bd6a}
+.requirements{
+    position:relative;
+    width:100%;
+
+    /* mantiene una proporción horizontal */
+    aspect-ratio:1.30 / 1;
+
+    min-height:0;
+}
+
+.requirements .assetbg{
+    position:absolute;
+
+    width:150%;
+    height:150%;
+
+    top:0;
+    left:0;
+
+    transform:none;
+
+    object-fit:contain;
+}
+
 h2{text-transform:uppercase;letter-spacing:.04em;margin:0 0 18px}
 
 /* activities */
-.activities{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 12px}.act{text-align:center;padding:8px}.act img{width:72px;height:72px;object-fit:contain;display:block;margin:auto}.act b{display:block;color:#f0d49b;font-size:.92rem}.act span{font-size:.78rem;color:#cfb998}
+.activities{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 12px}.act{text-align:center;padding:8px}.act img{width:150px;height:auto;object-fit:contain;display:block;margin:0 auto 6px;filter:drop-shadow(0 5px 7px #0008)}.act b{display:block;color:#f0d49b;font-size:.92rem}.act span{font-size:.78rem;color:#cfb998}
 
-/* lower */
-.lower{display:grid;grid-template-columns:1.25fr .72fr;gap:20px}.ranksbox{min-height:390px}.rankimg{position:relative;z-index:2;width:100%;height:100%;object-fit:contain;padding:25px}
-.side{display:grid;gap:20px}.requirements{min-height:250px}.requirements .content{padding:44px 50px}.requirements ul{list-style:none;padding:0;margin:0}.requirements li{margin:11px 0}.requirements li:before{content:"☑";margin-right:9px}.note{margin:20px 0 0 auto;width:170px;text-align:center;font-style:italic;transform:rotate(-2deg)}
+/* BLOQUE INFERIOR */
+.lower{
+    display:grid;
+    grid-template-columns:60% 40%;
+    gap:28px;
+    align-items:center;
+}
 
-.invite{min-height:290px;position:relative;background:#080606;border:1px solid #765025;overflow:hidden}.inviteframe{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}.invitecontent{position:relative;z-index:2;height:100%;display:grid;grid-template-columns:.7fr 1fr .7fr;align-items:center;text-align:center;padding:22px}.invitecontent img{max-width:100%;max-height:220px;object-fit:contain}.invitecontent h2{font-size:1.4rem;margin-bottom:10px}.invitecontent p{font-size:.9rem}
+/* RANGOS */
+.ranksbox{
+    position:relative;
+    min-height:520px;
+}
+
+.ranksbox .assetbg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:fill;
+}
+
+.rankimg{
+    position:absolute;
+    z-index:2;
+    width:95%;
+    height:auto;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    object-fit:contain;
+    padding:0;
+}
+
+/* COLUMNA DERECHA */
+.side{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:35px;
+    width:100%;
+}
+
+/* REQUISITOS */
+.requirements{
+    position:relative;
+    width:100%;
+	top:-50%;
+    left:-30%;
+    min-height:0;
+}
+
+.requirements .assetbg{
+    position:relative;
+    width:150%;
+    height:auto;
+    display:block;
+    object-fit:contain;
+}
+
+/* INVITACIÓN */
+.invite{
+    position:relative;
+    width:100%;
+    min-height:0;
+    background:transparent;
+    border:0;
+    overflow:visible;
+}
+
+.inviteframe{
+    position:relative;
+    width:100%;
+    height:auto;
+    display:block;
+    object-fit:contain;
+}
+
+/* SOBRE NOSOTROS */
+
+.sobre-nosotros .content{
+    padding:55px 65px 50px;
+}
+
+.sobre-nosotros h2{
+    margin:0 0 22px;
+    font-size:1.65rem;
+    line-height:1.1;
+}
+
+.sobre-nosotros p{
+    margin:0 0 18px;
+    font-size:1.05rem;
+    line-height:1.45;
+    max-width:95%;
+}
+
+.sobre-nosotros .bienvenida{
+    margin-top:24px;
+    font-weight:bold;
+    font-style:italic;
+    font-size:1.1rem;
+}
 
 /* separators */
 .sep{height:40px;display:flex;justify-content:center;align-items:center;margin:5px 0 18px}.sep img{max-height:32px;max-width:75%;object-fit:contain}
 
 footer{padding:24px 0;border-top:1px solid #6b461e;background:#070402}.foot{display:flex;justify-content:space-between;align-items:center;gap:20px}.foot strong{color:#e4bf70;font-size:1.35rem}.foot em{color:#d7c19c}
 
-@media(max-width:900px){.navcontent{gap:14px;font-size:.78rem}.heroin,.row,.lower{grid-template-columns:1fr}.hero{min-height:900px}.logo{max-width:430px;margin:auto;display:block}.activities{grid-template-columns:repeat(2,1fr)}.invitecontent{grid-template-columns:.7fr 1fr}.invitecontent .kupo{display:none}}
-@media(max-width:600px){.topnav{height:62px}.navcontent a:not(.navdiscord):nth-of-type(n+4){display:none}.hero{min-height:820px}.heroin{padding-top:80px}.herotext h1{font-size:3.7rem}.server{grid-template-columns:1fr}.server div{border-right:0;border-bottom:1px solid #63431e}.content{padding:38px 30px}.activities{grid-template-columns:1fr 1fr}.invitecontent{grid-template-columns:1fr}.invitecontent>img{display:none}.foot{flex-direction:column;text-align:center}}
+@media(max-width:900px){.navcontent{gap:14px;font-size:.78rem}.heroin,.row,.lower{grid-template-columns:1fr}.hero{min-height:900px}.logo{max-width:430px;margin:auto;display:block}.activities{grid-template-columns:repeat(2,1fr)}.ranksbox{min-height:460px}.requirements{width:72%}.invite{width:86%}}
+@media(max-width:600px){.topnav{height:62px}.navcontent a:not(.navdiscord):nth-of-type(n+4){display:none}.hero{min-height:820px}.heroin{padding-top:80px}.herotext h1{font-size:3.7rem}.server{grid-template-columns:1fr}.server div{border-right:0;border-bottom:1px solid #63431e}.content{padding:38px 30px}.activities{grid-template-columns:1fr 1fr}.ranksbox{min-height:390px}.rankimg{width:98%}.requirements{width:92%}.invite{width:100%}.foot{flex-direction:column;text-align:center}}
 </style>
 </head>
 <body>
@@ -91,27 +214,38 @@ footer{padding:24px 0;border-top:1px solid #6b461e;background:#070402}.foot{disp
 <div class="wrap">
 
   <section class="row" id="fc">
-    <article class="assetbox light">
-      <img class="assetbg" src="assets/marcos/marco-claro.png" alt="">
-      <div class="content">
-        <h2>⚜ Sobre nosotros</h2>
-        <p><b>La Taberna</b> es una Free Company hispanohablante creada para reunir aventureros de todos los rincones de Eorzea.</p>
-        <p>Un lugar para quienes buscan compañía, apoyo, diversión y grandes momentos. Aquí todos tienen un espacio, ya seas nuevo o veterano.</p>
-        <p><b><i>¡Bienvenido a La Taberna!</i></b></p>
-      </div>
-    </article>
+    <article class="assetbox light sobre-nosotros">
+    <img class="assetbg" src="assets/marcos/marco-claro.png" alt="">
+
+		<div class="content">
+			<h2>⚜ Sobre nosotros</h2>
+
+			<p>
+				<b>La Taberna</b> es una Free Company hispanohablante creada para
+				reunir aventureros de todos los rincones de Eorzea.
+			</p>
+
+			<p>
+				Un lugar para quienes buscan compañía, apoyo, diversión y grandes
+				momentos. Aquí todos tienen un espacio, ya seas nuevo o veterano.
+			</p>
+
+			<p class="bienvenida">
+				¡Bienvenido a La Taberna!
+			</p>
+		</div>
+	</article>
 
     <article class="assetbox dark" id="actividades">
       <img class="assetbg" src="assets/marcos/marco-oscuro.png" alt="">
       <div class="content">
-        <h2>¿Qué hacemos?</h2>
         <div class="activities">
-          <div class="act"><img src="assets/actividades/raids.png"><b>Dungeons, Trials & Raids</b><span>Contenido PvE</span></div>
-          <div class="act"><img src="assets/actividades/nuevos.png"><b>Nuevos jugadores</b><span>Ayuda y progresión</span></div>
-          <div class="act"><img src="assets/actividades/exploracion.png"><b>Exploración</b><span>Contenido grupal</span></div>
-          <div class="act"><img src="assets/actividades/glamour.png"><b>Glamour & mounts</b><span>Achievements</span></div>
-          <div class="act"><img src="assets/actividades/social.png"><b>Actividades sociales</b><span>Eventos de FC</span></div>
-          <div class="act"><img src="assets/actividades/taberna.png"><b>Conversaciones</b><span>Historias de taberna</span></div>
+          <div class="act"><img src="assets/actividades/raids.png"></div>
+          <div class="act"><img src="assets/actividades/nuevos.png"></div>
+          <div class="act"><img src="assets/actividades/exploracion.png"></div>
+          <div class="act"><img src="assets/actividades/glamour.png"></div>
+          <div class="act"><img src="assets/actividades/social.png"></div>
+          <div class="act"><img src="assets/actividades/taberna.png"></div>
         </div>
       </div>
     </article>
@@ -128,29 +262,11 @@ footer{padding:24px 0;border-top:1px solid #6b461e;background:#070402}.foot{disp
     <div class="side">
       <article class="assetbox requirements light">
         <img class="assetbg" src="assets/marcos/marco-requisitos.png" alt="">
-        <div class="content">
-          <h2>Requisitos</h2>
-          <ul>
-            <li>Buen ambiente</li>
-            <li>Respeto</li>
-            <li>Disposición para aprender</li>
-            <li>Ganas de compartir</li>
-          </ul>
-          <div class="note">Lo más importante:<br><b>¡Ven con buenas vibras!</b></div>
-        </div>
       </article>
 
       <article class="invite" id="unete">
         <img class="inviteframe" src="assets/marcos/marco-invite.png" alt="">
-        <div class="invitecontent">
-          <img src="assets/extras/crystal-teleport.png" alt="Cristal">
-          <div>
-            <h2>¡Únete a La Taberna!</h2>
-            <p>Entra al Discord, preséntate y comienza tu próxima aventura con nosotros.</p>
-            <a href="#" class="discordbtn discord-link">☯ &nbsp; IR AL DISCORD</a>
-          </div>
-          <img class="kupo" src="assets/extras/kupo.png" alt="">
-        </div>
+        
       </article>
     </div>
   </section>
@@ -170,9 +286,9 @@ footer{padding:24px 0;border-top:1px solid #6b461e;background:#070402}.foot{disp
 
 <script>
 const CONFIG={
-  discord:"https://discord.gg/TU-INVITACION",
-  dataCenter:"Crystal",
-  world:"Balmung"
+  discord:"https://discord.gg/fbHPZxps5T",
+  dataCenter:"Hyperion",
+  world:"Ultros"
 };
 document.getElementById("dc").textContent=CONFIG.dataCenter;
 document.getElementById("world").textContent=CONFIG.world;
