@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="La Taberna - Free Company hispanohablante de FINAL FANTASY XIV." />
+  <title>La Taberna | Free Company FFXIV</title>
+
+  <style>
+    :root{
+      --bg:#0f0c0a;
+      --bg-soft:#17110d;
+      --panel:#1d1510;
+      --panel-2:#251a13;
+      --text:#f4eadc;
+      --muted:#c6b7a4;
+      --gold:#d3aa5d;
+      --gold-soft:#f0d49a;
+      --line:rgba(211,170,93,.22);
+      --shadow:0 18px 45px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+
+    *{
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family:Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top, rgba(125,75,35,.15), transparent 40%),
+        linear-gradient(180deg, #0b0908 0%, #120d0a 45%, #0b0908 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.08;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:32px 32px;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(1120px, calc(100% - 36px));
+      margin:auto;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(12px);
+      background:rgba(12,9,7,.82);
+      border-bottom:1px solid var(--line);
+    }
+
+    nav{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.08em;
+      color:var(--gold-soft);
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      border-radius:50%;
+      background:linear-gradient(145deg,#2c1d12,#15100c);
+      box-shadow:inset 0 0 18px rgba(211,170,93,.08);
+      font-size:21px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:22px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .nav-links a:hover{
+      color:var(--gold-soft);
+    }
+
+    .hero{
+      min-height:78vh;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding:95px 0 70px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:520px;
+      height:520px;
+      border-radius:50%;
+      border:1px solid rgba(211,170,93,.08);
+      box-shadow:
+        0 0 0 60px rgba(211,170,93,.025),
+        0 0 0 120px rgba(211,170,93,.015);
+      z-index:-1;
+    }
+
+    .eyebrow{
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      font-size:.82rem;
+      margin-bottom:14px;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(3.2rem,8vw,6.6rem);
+      line-height:.95;
+      color:#fff5e7;
+      text-shadow:0 4px 22px rgba(0,0,0,.5);
+    }
+
+    .tag{
+      color:var(--gold);
+      font-size:clamp(1.15rem,2vw,1.5rem);
+      margin-top:16px;
+      letter-spacing:.12em;
+    }
+
+    .hero p{
+      max-width:720px;
+      margin:24px auto 0;
+      color:var(--muted);
+      font-size:1.12rem;
+    }
+
+    .actions{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:34px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 22px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      transition:.2s ease;
+      font-family:Arial, sans-serif;
+      font-weight:700;
+      font-size:.94rem;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#d2aa61,#9f7437);
+      color:#140e09;
+      border-color:transparent;
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,.025);
+      color:var(--text);
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 30px rgba(0,0,0,.24);
+    }
+
+    section{
+      padding:84px 0;
+    }
+
+    .section-heading{
+      text-align:center;
+      margin-bottom:38px;
+    }
+
+    .section-heading span{
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.78rem;
+    }
+
+    .section-heading h2{
+      margin:8px 0 0;
+      font-size:clamp(2rem,4vw,3rem);
+    }
+
+    .section-heading p{
+      color:var(--muted);
+      max-width:680px;
+      margin:12px auto 0;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .card{
+      background:linear-gradient(180deg,rgba(39,27,19,.88),rgba(24,17,13,.94));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .card .icon{
+      font-size:30px;
+      margin-bottom:10px;
+    }
+
+    .card h3{
+      margin:0 0 8px;
+      color:var(--gold-soft);
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .about{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:26px;
+      align-items:stretch;
+    }
+
+    .quote{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      min-height:100%;
+      font-size:1.45rem;
+      color:var(--gold-soft);
+      font-style:italic;
+    }
+
+    .ranks{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:12px;
+    }
+
+    .rank{
+      text-align:center;
+      background:rgba(255,255,255,.025);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:20px 12px;
+    }
+
+    .rank strong{
+      display:block;
+      color:var(--gold-soft);
+      margin-bottom:6px;
+    }
+
+    .rank span{
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .join{
+      text-align:center;
+      padding:48px 26px;
+      background:
+        linear-gradient(145deg,rgba(62,40,23,.78),rgba(24,17,13,.94));
+      border:1px solid var(--line);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+    }
+
+    .join h2{
+      font-size:clamp(2rem,4vw,3rem);
+      margin:0;
+    }
+
+    .join p{
+      max-width:650px;
+      margin:14px auto 26px;
+      color:var(--muted);
+    }
+
+    .server-box{
+      margin:20px auto 0;
+      display:flex;
+      justify-content:center;
+      gap:22px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-family:Arial, sans-serif;
+      font-size:.92rem;
+    }
+
+    .server-box b{
+      color:var(--gold-soft);
+    }
+
+    footer{
+      padding:34px 0 42px;
+      border-top:1px solid var(--line);
+      color:#8f8274;
+      text-align:center;
+      font-family:Arial,sans-serif;
+      font-size:.86rem;
+    }
+
+    @media (max-width:900px){
+      .grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .about{
+        grid-template-columns:1fr;
+      }
+
+      .ranks{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .nav-links{
+        display:none;
+      }
+    }
+
+    @media (max-width:560px){
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      .ranks{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        min-height:72vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#inicio">
+          <span class="brand-mark">🍺</span>
+          <span>LA TABERNA</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="#nosotros">Nosotros</a>
+          <a href="#actividades">Actividades</a>
+          <a href="#rangos">Rangos</a>
+          <a href="#unirse">Únete</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="eyebrow">Free Company · FINAL FANTASY XIV</div>
+
+        <h1>La Taberna</h1>
+        <div class="tag">«SALUD»</div>
+
+        <p>
+          Un punto de encuentro para aventureros hispanohablantes.
+          Aquí compartimos historias, aprendemos juntos y disfrutamos
+          de todo lo que Eorzea tiene para ofrecer.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" id="discordHero" href="#" target="_blank" rel="noopener">
+            Entrar al Discord
+          </a>
+
+          <a class="btn btn-secondary" href="#nosotros">
+            Conocer La Taberna
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <div class="container">
+        <div class="section-heading">
+          <span>Nuestra casa</span>
+          <h2>Bienvenido a La Taberna</h2>
+        </div>
+
+        <div class="about">
+          <div class="card">
+            <h3>Una mesa para cada aventurero</h3>
+            <p>
+              La Taberna es una Free Company hispanohablante creada para reunir
+              jugadores nuevos y veteranos en un ambiente relajado, cercano y
+              colaborativo. No necesitas experiencia previa: si tienes ganas de
+              jugar, aprender y compartir, ya tienes un lugar aquí.
+            </p>
+            <br />
+            <p>
+              Nuestro objetivo es formar una comunidad estable donde podamos
+              ayudarnos, organizar contenido y disfrutar FFXIV sin convertir
+              el juego en una obligación.
+            </p>
+          </div>
+
+          <div class="card quote">
+            “Toda aventura merece una buena historia al volver.”
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="actividades">
+      <div class="container">
+        <div class="section-heading">
+          <span>Qué hacemos</span>
+          <h2>Hay lugar para todos</h2>
+          <p>
+            Desde una dungeon tranquila hasta una noche entera persiguiendo
+            mounts. La idea es jugar juntos y pasarlo bien.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="icon">⚔️</div>
+            <h3>PvE</h3>
+            <p>Dungeons, Trials, Raids, Roulettes y contenido grupal.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🌱</div>
+            <h3>Nuevos jugadores</h3>
+            <p>Ayuda con jobs, progresión, contenido y dudas del juego.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🐉</div>
+            <h3>Mounts & Achievements</h3>
+            <p>Farm de mounts, logros, reliquias y contenido antiguo.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">✨</div>
+            <h3>Glamour</h3>
+            <p>Porque el verdadero endgame siempre ha sido verse bien.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🏠</div>
+            <h3>Comunidad</h3>
+            <p>Eventos, reuniones, concursos y actividades dentro de la FC.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🍻</div>
+            <h3>La Taberna</h3>
+            <p>Conversación, buena onda y un lugar donde volver después de cada aventura.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="rangos">
+      <div class="container">
+        <div class="section-heading">
+          <span>La casa</span>
+          <h2>Rangos de La Taberna</h2>
+          <p>
+            Una jerarquía simple, temática y pensada para crecer con la comunidad.
+          </p>
+        </div>
+
+        <div class="ranks">
+          <div class="rank">
+            <strong>🍺 Tabernero</strong>
+            <span>Líder de la Free Company</span>
+          </div>
+
+          <div class="rank">
+            <strong>🗝️ Posadero</strong>
+            <span>Oficiales y administración</span>
+          </div>
+
+          <div class="rank">
+            <strong>🍷 Parroquiano</strong>
+            <span>Veteranos de confianza</span>
+          </div>
+
+          <div class="rank">
+            <strong>⚔️ Aventurero</strong>
+            <span>Miembros de la compañía</span>
+          </div>
+
+          <div class="rank">
+            <strong>🧳 Forastero</strong>
+            <span>Nuevos integrantes</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="unirse">
+      <div class="container">
+        <div class="join">
+          <div class="eyebrow">Las puertas están abiertas</div>
+          <h2>¿Buscas una mesa?</h2>
+
+          <p>
+            No importa si acabas de comenzar tu aventura o si llevas años
+            recorriendo Eorzea. Si buscas una comunidad hispanohablante
+            tranquila y activa, eres bienvenido.
+          </p>
+
+          <a class="btn btn-primary" id="discordJoin" href="#" target="_blank" rel="noopener">
+            Unirme a La Taberna
+          </a>
+
+          <div class="server-box">
+            <div>Data Center: <b id="dataCenter">TU DATA CENTER</b></div>
+            <div>World: <b id="world">TU WORLD</b></div>
+            <div>Idioma: <b>Español</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>La Taberna «SALUD» · Free Company de FINAL FANTASY XIV</div>
+      <div style="margin-top:7px;">
+        Sitio comunitario no afiliado ni respaldado por Square Enix.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /*
+      =========================
+      CONFIGURACIÓN RÁPIDA
+      =========================
+
+      Cambia únicamente estos tres valores.
+    */
+
+    const CONFIG = {
+      discord: "https://discord.gg/TU-INVITACION",
+      dataCenter: "TU DATA CENTER",
+      world: "TU WORLD"
+    };
+
+    document.getElementById("discordHero").href = CONFIG.discord;
+    document.getElementById("discordJoin").href = CONFIG.discord;
+    document.getElementById("dataCenter").textContent = CONFIG.dataCenter;
+    document.getElementById("world").textContent = CONFIG.world;
+
+    document.getElementById("discordHero").addEventListener("click", function(e) {
+      if (CONFIG.discord.includes("TU-INVITACION")) {
+        e.preventDefault();
+        alert("Primero debes configurar el enlace de Discord en el archivo index.html.");
+      }
+    });
+
+    document.getElementById("discordJoin").addEventListener("click", function(e) {
+      if (CONFIG.discord.includes("TU-INVITACION")) {
+        e.preventDefault();
+        alert("Primero debes configurar el enlace de Discord en el archivo index.html.");
+      }
+    });
+  </script>
+</body>
+</html>
